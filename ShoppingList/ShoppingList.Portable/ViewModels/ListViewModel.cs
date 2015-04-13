@@ -2,32 +2,28 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
+    using System.Linq;
 
     using GalaSoft.MvvmLight.Command;
     using GalaSoft.MvvmLight.Views;
 
     using ShoppingList.Portable.Models;
-
-
-
-
-
-
+    using ShoppingList.Portable.Services;
 
     public class ListViewModel : CoreViewModel
     {
+        private readonly DataService dataService;
+
         private List<EntryViewModel> entries;
 
         private RelayCommand deleteAllCommand;
 
         private RelayCommand addCommand;
 
-        public ListViewModel(INavigationService navigationService)
+        public ListViewModel(INavigationService navigationService, DataService dataService)
             : base(navigationService)
         {
+            this.dataService = dataService;
         }
 
         public List<EntryViewModel> Entries
@@ -79,7 +75,18 @@
 
         private void SaveChanges()
         {
-
+            this.dataService.SaveData(
+                this.Entries.Select(
+                    entry =>
+                    new Entry
+                        {
+                            Description = entry.Description, 
+                            Amount = entry.Amount,
+                            Checked = entry.Checked
+                        })
+                    .ToList());
         }
+
+
     }
 }
