@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShoppingList.Portable.ViewModels
+﻿namespace ShoppingList.Portable.ViewModels
 {
-    class EntryViewModel
+    using GalaSoft.MvvmLight.Views;
+
+    public class EntryViewModel : CoreViewModel
     {
+        public EntryViewModel(INavigationService navigationService)
+            : base(navigationService)
+        {
+        }
+
+        public string Description { get; set; }
+        public float Amount { get; set; }
+        public bool Checked { get; set; }
     }
 }

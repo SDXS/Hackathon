@@ -1,21 +1,38 @@
 ﻿namespace ShoppingList.Portable.ViewModels
 {
+    using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
 
-    using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using GalaSoft.MvvmLight.Views;
 
     using ShoppingList.Portable.Models;
 
-    public class ListViewModel : ViewModelBase
+
+
+
+
+
+
+    public class ListViewModel : CoreViewModel
     {
-        private List<Entry> entries;
+        private List<EntryViewModel> entries;
 
         private RelayCommand deleteAllCommand;
 
-        public List<Entry> Entries
+        private RelayCommand addCommand;
+
+        public ListViewModel(INavigationService navigationService)
+            : base(navigationService)
         {
-            get { return this.entries ?? (this.entries = new List<Entry>()); }
+        }
+
+        public List<EntryViewModel> Entries
+        {
+            get { return this.entries ?? (this.entries = new List<EntryViewModel>()); }
             private set
             {
                 this.entries = value;
@@ -45,7 +62,18 @@
         {
             get
             {
-                
+                return this.addCommand ??
+                       (this.addCommand =
+                        new RelayCommand(
+                            () => this.navigationService.NavigateTo(NavigationConstants.EntryPage)));
+            }
+        }
+
+        public RelayCommand<EntryViewModel> EditCommand
+        {
+            get
+            {
+                throw new NotImplementedException();
             }
         }
 
