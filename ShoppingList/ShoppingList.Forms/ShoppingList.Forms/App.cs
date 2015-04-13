@@ -12,7 +12,7 @@ namespace ShoppingList.Forms
         public App()
         {
             // The root page of your application
-            MainPage = new ContentPage
+            MainPage = new NavigationPage(new ContentPage
             {
                 Content = new StackLayout
                 {
@@ -24,7 +24,7 @@ namespace ShoppingList.Forms
 						}
 					}
                 }
-            };
+            });
         }
 
         protected override void OnStart()

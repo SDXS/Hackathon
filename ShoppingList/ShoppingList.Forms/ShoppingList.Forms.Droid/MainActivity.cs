@@ -16,6 +16,8 @@ namespace ShoppingList.Forms.Droid
         {
             base.OnCreate(bundle);
 
+            Bootstrap.Setup();
+            
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }

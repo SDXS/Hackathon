@@ -17,6 +17,8 @@ namespace ShoppingList.Forms.WinPhone
             InitializeComponent();
             SupportedOrientations = SupportedPageOrientation.PortraitOrLandscape;
 
+            Bootstrap.Setup();
+
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new ShoppingList.Forms.App());
         }
