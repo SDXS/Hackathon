@@ -43,7 +43,10 @@
 
         public RelayCommand AddCommand
         {
-            
+            get
+            {
+                
+            }
         }
 
         private void SaveChanges()
