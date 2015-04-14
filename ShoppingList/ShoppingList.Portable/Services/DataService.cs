@@ -50,13 +50,7 @@
                 }
             }
 
-            return new List<Entry>
-                       {
-                           new Entry { Description = "Kühlerpaste 20ml Tube", Amount = 5 },
-                           new Entry { Description = "AB-14 Kühlkörper", Amount = 5 },
-                           new Entry { Description = "16GB DDR4 RAM Riegel", Amount = 20 },
-                           new Entry { Description = "1000W Netzteil 90+", Amount = 1 }
-                       };
+            return null;
         }
     }
 }

@@ -120,7 +120,21 @@
             try
             {
                 this.IsLoading = true;
-                this.Entries = (await this.dataService.LoadDataAsync()).Select(
+
+                var list = await this.dataService.LoadDataAsync();
+                if (list == null || !list.Any())
+                {
+                    // Just provide some demo data.
+                    list = new List<Entry>
+                               {
+                                   new Entry { Description = "Kühlerpaste 20ml Tube", Amount = 5 },
+                                   new Entry { Description = "AB-14 Kühlkörper", Amount = 5 },
+                                   new Entry { Description = "16GB DDR4 RAM Riegel", Amount = 20 },
+                                   new Entry { Description = "1000W Netzteil 90+", Amount = 1 }
+                               };
+                }
+
+                this.Entries = list.Select(
                     entry => new EntryViewModel(this.NavigationService)
                                  {
                                      Description = entry.Description,
