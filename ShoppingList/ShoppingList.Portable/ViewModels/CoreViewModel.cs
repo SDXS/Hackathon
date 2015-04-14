@@ -5,11 +5,19 @@
 
     public abstract class CoreViewModel : ViewModelBase
     {
-        protected readonly INavigationService navigationService;
+        protected readonly INavigationService NavigationService;
 
-        public CoreViewModel(INavigationService navigationService)
+        private bool isLoading;
+
+        protected CoreViewModel(INavigationService navigationService)
         {
-            this.navigationService = navigationService;
+            this.NavigationService = navigationService;
+        }
+
+        public bool IsLoading
+        {
+            get { return this.isLoading; }
+            set { this.Set(ref this.isLoading, value); }
         }
     }
 }

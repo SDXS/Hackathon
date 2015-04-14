@@ -1,30 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
-
-namespace ShoppingList.Forms
+﻿namespace ShoppingList.Forms
 {
+    using GalaSoft.MvvmLight.Ioc;
+    using GalaSoft.MvvmLight.Views;
+
+    using ShoppingList.Forms.Services;
+    using ShoppingList.Forms.Views;
+    using ShoppingList.Portable.ViewModels;
+
+    using Xamarin.Forms;
+
     public class App : Application
     {
         public App()
         {
+            NavigationPage navigationPage;
+
             // The root page of your application
-            MainPage = new NavigationPage(new ContentPage
-            {
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-						new Label {
-							XAlign = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
-					}
-                }
-            });
+            this.MainPage = navigationPage = new NavigationPage(new ListPage(SimpleIoc.Default.GetInstance<ListViewModel>()));
+
+            var navigationService = (NavigationService)SimpleIoc.Default.GetInstance<INavigationService>();
+            navigationService.Initialize(navigationPage);
         }
 
         protected override void OnStart()

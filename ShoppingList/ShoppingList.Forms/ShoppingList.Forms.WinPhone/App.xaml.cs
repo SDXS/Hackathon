@@ -1,16 +1,17 @@
-﻿using System;
-using System.Diagnostics;
-using System.Resources;
-using System.Windows;
-using System.Windows.Markup;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-using ShoppingList.Forms.WinPhone.Resources;
-
-namespace ShoppingList.Forms.WinPhone
+﻿namespace ShoppingList.Forms.WinPhone
 {
-    public partial class App : Application
+    using System;
+    using System.Diagnostics;
+    using System.Windows;
+    using System.Windows.Markup;
+    using System.Windows.Navigation;
+
+    using Microsoft.Phone.Controls;
+    using Microsoft.Phone.Shell;
+
+    using ShoppingList.Forms.WinPhone.Resources;
+
+    public partial class App
     {
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
@@ -24,22 +25,22 @@ namespace ShoppingList.Forms.WinPhone
         public App()
         {
             // Global handler for uncaught exceptions.
-            UnhandledException += Application_UnhandledException;
+            this.UnhandledException += this.Application_UnhandledException;
 
             // Standard XAML initialization
-            InitializeComponent();
+            this.InitializeComponent();
 
             // Phone-specific initialization
-            InitializePhoneApplication();
+            this.InitializePhoneApplication();
 
             // Language display initialization
-            InitializeLanguage();
+            this.InitializeLanguage();
 
             // Show graphics profiling information while debugging.
             if (Debugger.IsAttached)
             {
                 // Display the current frame rate counters.
-                Application.Current.Host.Settings.EnableFrameRateCounter = true;
+                Current.Host.Settings.EnableFrameRateCounter = true;
 
                 // Show the areas of the app that are being redrawn in each frame.
                 //Application.Current.Host.Settings.EnableRedrawRegions = true;

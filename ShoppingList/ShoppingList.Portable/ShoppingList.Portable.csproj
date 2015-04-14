@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap.cs" />
     <Compile Include="Models\Entry.cs" />
     <Compile Include="NavigationConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

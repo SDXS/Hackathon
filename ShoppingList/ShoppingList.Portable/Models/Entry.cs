@@ -8,7 +8,7 @@
         [DataMember]
         public string Description { get; set; }
         [DataMember]
-        public float Amount { get; set; }
+        public int Amount { get; set; }
         [DataMember]
         public bool Checked { get; set; }
     }

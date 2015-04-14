@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GalaSoft.MvvmLight.Ioc;
-using GalaSoft.MvvmLight.Views;
-
-namespace ShoppingList.Forms
+﻿namespace ShoppingList.Forms
 {
+    using GalaSoft.MvvmLight.Ioc;
+
+    using ShoppingList.Forms.Services;
+
     public static class Bootstrap
     {
         public static void Setup()
         {
-            SimpleIoc.Default.Register<INavigationService, NavigationService>();
+            // Services
+            SimpleIoc.Default.Register<GalaSoft.MvvmLight.Views.INavigationService, NavigationService>();
+
+            Portable.Bootstrap.Setup();
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingList.Forms.Views.ListPage">
+  <StackLayout VerticalOptions="Fill">
+    <ListView x:Name="listView" ItemsSource="{Binding Entries}" ItemSelected="listView_ItemSelected">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.View>
+              <ContentView>
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                  </Grid.ColumnDefinitions>
+                  <Label Grid.Column="0" Text="{Binding Amount}" VerticalOptions="Center" HorizontalOptions="End" />
+                  <Label Grid.Column="1" Text="{Binding Description}" VerticalOptions="Center" />
+                  <Button Grid.Column="2" Text="Edit" HorizontalOptions="EndAndExpand" IsVisible="{Binding IsSelected}" Clicked="editButton_Clicked" />
+                  <Button Grid.Column="3" Text="Remove" HorizontalOptions="EndAndExpand" IsVisible="{Binding IsSelected}" Clicked="removeButton_Clicked" />
+                </Grid>
+              </ContentView>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+      <Button Text="Add" HorizontalOptions="StartAndExpand" Command="{Binding AddCommand}" />
+      <Button Text="Clear" HorizontalOptions="EndAndExpand" Command="{Binding DeleteAllCommand}" />
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

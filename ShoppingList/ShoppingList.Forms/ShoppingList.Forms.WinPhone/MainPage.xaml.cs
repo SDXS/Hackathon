@@ -1,26 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
-using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
-
-namespace ShoppingList.Forms.WinPhone
+﻿namespace ShoppingList.Forms.WinPhone
 {
-    public partial class MainPage : global::Xamarin.Forms.Platform.WinPhone.FormsApplicationPage
+    using Microsoft.Phone.Controls;
+
+    public partial class MainPage
     {
         public MainPage()
         {
-            InitializeComponent();
-            SupportedOrientations = SupportedPageOrientation.PortraitOrLandscape;
+            this.InitializeComponent();
+            this.SupportedOrientations = SupportedPageOrientation.PortraitOrLandscape;
 
             Bootstrap.Setup();
 
-            global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new ShoppingList.Forms.App());
+            Xamarin.Forms.Forms.Init();
+            this.LoadApplication(new Forms.App());
         }
     }
 }
