@@ -127,10 +127,24 @@
                     // Just provide some demo data.
                     list = new List<Entry>
                                {
-                                   new Entry { Description = "Kühlerpaste 20ml Tube", Amount = 5 },
-                                   new Entry { Description = "AB-14 Kühlkörper", Amount = 5 },
+                                   new Entry { Description = "Intel Xeon E5-2698V3 16 CORE CPU", Amount = 2 },
+                                   new Entry { Description = "Kühlerpaste 20ml Tube", Amount = 2 },
+                                   new Entry { Description = "AB-14 Kühlkörper", Amount = 2 },
                                    new Entry { Description = "16GB DDR4 RAM Riegel", Amount = 20 },
-                                   new Entry { Description = "1000W Netzteil 90+", Amount = 1 }
+                                   new Entry { Description = "1000W Netzteil 90+", Amount = 1 },
+                                   new Entry { Description = "RJ45 CAT8 Kabel 0,5m", Amount = 12 },
+                                   new Entry { Description = "RJ45 CAT8 Kabel 1m", Amount = 18 },
+                                   new Entry { Description = "RJ45 CAT8 Kabel 2m", Amount = 5 },
+                                   new Entry { Description = "RJ45 CAT8 Kabel 10m", Amount = 8 },
+                                   new Entry { Description = "RJ45 CAT8 Kabel 20m", Amount = 7 },
+                                   new Entry { Description = "16 Slot Router", Amount = 1 },
+                                   new Entry { Description = "Ersatz Blade-Frontblende", Amount = 1 },
+                                   new Entry { Description = "6TB Enterprise Hard Disk SATA-III", Amount = 8 },
+                                   new Entry { Description = "1TB Enterprise SSD SATA-III", Amount = 2 },
+                                   new Entry { Description = "1TB Enterprise SSD PCIe", Amount = 1 },
+                                   new Entry { Description = "ESX Lizenz", Amount = 2 },
+                                   new Entry { Description = "MS SQL Server Kernlizenz", Amount = 16 },
+                                   new Entry { Description = "MS Windows Server Core Lizenz", Amount = 2 },
                                };
                 }
 
