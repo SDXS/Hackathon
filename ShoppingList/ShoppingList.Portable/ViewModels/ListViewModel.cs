@@ -93,7 +93,7 @@
 
         public async Task SaveAsync(EntryViewModel entryViewModel)
         {
-            if (!entryViewModel.IsAdded)
+            if (!this.Entries.Contains(entryViewModel))
             {
                 this.Entries = this.Entries.Concat(new[] { entryViewModel }).ToList();
 
