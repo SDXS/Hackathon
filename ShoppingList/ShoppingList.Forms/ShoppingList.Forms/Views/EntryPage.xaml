@@ -14,8 +14,8 @@
       <Entry Text="{Binding Description}" Placeholder="Description" />
       <Entry Text="{Binding Amount, Converter={StaticResource IntegerToStringConverter}}" Placeholder="Amount" />
       <StackLayout Orientation="Horizontal">
-        <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="Fill" />
-        <Button Text="Delete" Command="{Binding RemoveCommand}" HorizontalOptions="Fill" IsVisible="{Binding IsAdded}" />
+        <Button Text="Save" Command="{Binding SaveCommand}" />
+        <Button Text="Delete" Command="{Binding RemoveCommand}" IsVisible="{Binding IsAdded}" />
       </StackLayout>
     </StackLayout>
   </Grid>
