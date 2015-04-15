@@ -10,7 +10,7 @@
           <DataTemplate>
             <ViewCell>
               <ViewCell.View>
-                <ContentView>
+                <ContentView HeightRequest="70">
                   <Grid>
                     <Grid.ColumnDefinitions>
                       <ColumnDefinition Width="50" />
