@@ -19,6 +19,8 @@
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Bootstrap.Setup();
+
             Xamarin.Forms.Forms.Init();
             this.LoadApplication(new App());
 

@@ -57,7 +57,7 @@
             {
                 return this.addCommand ??
                        (this.addCommand =
-                        new RelayCommand(() => this.NavigationService.NavigateTo(NavigationConstants.EntryPage, new EntryViewModel(this.NavigationService, false))));
+                        new RelayCommand(() => this.NavigationService.NavigateTo(NavigationConstants.EntryPage, new EntryViewModel(this.NavigationService))));
             }
         }
 
@@ -96,7 +96,13 @@
             if (!entryViewModel.IsAdded)
             {
                 this.Entries = this.Entries.Concat(new[] { entryViewModel }).ToList();
-                entryViewModel.IsAdded = true;
+
+                foreach (var entry in this.Entries)
+                {
+                    entry.IsSelected = false;
+                }
+
+                entryViewModel.IsSelected = true;
             }
 
             await this.SaveChangesAsync();
@@ -148,12 +154,7 @@
                                };
                 }
 
-                this.Entries = list.Select(
-                    entry => new EntryViewModel(this.NavigationService)
-                                 {
-                                     Description = entry.Description,
-                                     Amount = entry.Amount
-                                 }).ToList();
+                this.Entries = list.Select(entry => new EntryViewModel(this.NavigationService, entry)).ToList();
             }
             finally
             {

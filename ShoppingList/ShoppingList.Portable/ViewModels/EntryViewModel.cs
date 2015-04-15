@@ -1,14 +1,14 @@
 ﻿namespace ShoppingList.Portable.ViewModels
 {
-    using System.Runtime.InteropServices.WindowsRuntime;
-
     using GalaSoft.MvvmLight.Command;
     using GalaSoft.MvvmLight.Ioc;
     using GalaSoft.MvvmLight.Views;
 
+    using ShoppingList.Portable.Models;
+
     public class EntryViewModel : CoreViewModel
     {
-        private bool isNotAdded;
+        private Entry entity;
 
         private bool isSelected;
 
@@ -16,10 +16,17 @@
 
         private string description;
 
-        public EntryViewModel(INavigationService navigationService, bool isAdded = true)
+        public EntryViewModel(INavigationService navigationService, Entry entity = null)
             : base(navigationService)
         {
-            this.isNotAdded = !isAdded;
+            this.entity = entity;
+
+            this.Reset();
+        }
+
+        internal Entry Entity
+        {
+            get { return this.entity; }
         }
 
         public string Description
@@ -42,8 +49,7 @@
 
         public bool IsAdded
         {
-            get { return !this.isNotAdded; }
-            set { this.Set(ref this.isNotAdded, !value); }
+            get { return entity != null; }
         }
 
         public bool IsSelected
@@ -63,6 +69,14 @@
                        (this.saveCommand =
                         new RelayCommand(async () =>
                             {
+                                if (this.entity == null)
+                                {
+                                    this.entity = new Entry();
+                                }
+
+                                entity.Description = this.Description;
+                                entity.Amount = this.Amount;
+
                                 await SimpleIoc.Default.GetInstance<ListViewModel>().SaveAsync(this);
                                 this.NavigationService.GoBack();
                             },
@@ -88,5 +102,14 @@
         }
 
         #endregion Commands
+
+        internal void Reset()
+        {
+            if (this.entity != null)
+            {
+                this.Description = this.entity.Description;
+                this.Amount = this.entity.Amount;
+            }
+        }
     }
 }

@@ -5,7 +5,7 @@
   <Grid>
     <Image Source="bg.png" HorizontalOptions="Start" VerticalOptions="Center" />
     <StackLayout VerticalOptions="Fill">
-      <ListView x:Name="listView" ItemsSource="{Binding Entries}" ItemSelected="listView_ItemSelected">
+      <ListView x:Name="listView" ItemsSource="{Binding Entries}" ItemSelected="listView_ItemSelected" BackgroundColor="Transparent">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>

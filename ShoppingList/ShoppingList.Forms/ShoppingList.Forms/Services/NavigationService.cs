@@ -1,5 +1,6 @@
 ﻿namespace ShoppingList.Forms.Services
 {
+    using System;
     using System.Collections.Generic;
 
     using GalaSoft.MvvmLight.Views;
@@ -24,6 +25,8 @@
             this.navigationPage.Pushed += this.navigationPage_Pushed;
             this.navigationPage_Pushed(this, new NavigationEventArgs(navigationPage.CurrentPage));
         }
+
+        public event Action<Page, Page> Navigate;
 
         public string CurrentPageKey
         {

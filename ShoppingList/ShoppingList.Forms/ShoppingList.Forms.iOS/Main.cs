@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
-using UIKit;
-
-namespace ShoppingList.Forms.iOS
+﻿namespace ShoppingList.Forms.iOS
 {
+    using UIKit;
+
     public class Application
     {
         // This is the main entry point of the application.

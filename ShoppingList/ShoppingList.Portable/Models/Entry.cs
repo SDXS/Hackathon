@@ -9,7 +9,5 @@
         public string Description { get; set; }
         [DataMember]
         public int Amount { get; set; }
-        [DataMember]
-        public bool Checked { get; set; }
     }
 }
