@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:ShoppingList.Forms.Converters;assembly=ShoppingList.Forms"
+             x:Class="ShoppingList.Forms.Views.EntryPage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:IntegerToStringConverter x:Key="IntegerToStringConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <Grid>
+    <Image Source="bg.png" HorizontalOptions="Start" VerticalOptions="Center" />
+    <StackLayout>
+      <Entry Text="{Binding Description}" Placeholder="Description" />
+      <Entry Text="{Binding Amount, Converter={StaticResource IntegerToStringConverter}}" Placeholder="Amount" />
+      <StackLayout Orientation="Horizontal">
+        <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="Fill" />
+        <Button Text="Delete" Command="{Binding RemoveCommand}" HorizontalOptions="Fill" IsVisible="{Binding IsAdded}" />
+      </StackLayout>
+    </StackLayout>
+  </Grid>
+</ContentPage>
