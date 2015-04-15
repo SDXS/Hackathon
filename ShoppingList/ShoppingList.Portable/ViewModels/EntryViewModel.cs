@@ -12,7 +12,7 @@
 
         private bool isSelected;
 
-        private int amount;
+        private int amount = 1;
 
         private string description;
 
@@ -32,7 +32,13 @@
         public string Description
         {
             get { return this.description; }
-            set { this.Set(ref this.description, value); }
+            set
+            {
+                if (this.Set(ref this.description, value))
+                {
+                    this.SaveCommand.RaiseCanExecuteChanged();
+                }
+            }
         }
 
         public int Amount
@@ -80,7 +86,7 @@
                                 await SimpleIoc.Default.GetInstance<ListViewModel>().SaveAsync(this);
                                 this.NavigationService.GoBack();
                             },
-                            () => this.amount > 0));
+                            () => this.amount > 0 && this.description.Length > 0));
             }
         }
 
