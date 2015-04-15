@@ -8,13 +8,13 @@
 
     public class EntryViewModel : CoreViewModel
     {
-        private Entry entity;
+        private Entry entity = null; 
 
-        private bool isSelected;
+        private bool isSelected = false;
 
         private int amount = 1;
 
-        private string description;
+        private string description = string.Empty;
 
         public EntryViewModel(INavigationService navigationService, Entry entity = null)
             : base(navigationService)
@@ -55,7 +55,7 @@
 
         public bool IsAdded
         {
-            get { return entity != null; }
+            get { return this.entity != null; }
         }
 
         public bool IsSelected
