@@ -9,7 +9,7 @@
         public static void Setup()
         {
             // Services
-            SimpleIoc.Default.Register<GalaSoft.MvvmLight.Views.INavigationService, NavigationService>();
+            SimpleIoc.Default.Register<Portable.Services.INavigationService, NavigationService>();
 
             Portable.Bootstrap.Setup();
         }

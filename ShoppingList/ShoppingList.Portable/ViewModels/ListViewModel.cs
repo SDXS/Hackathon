@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
 
     using GalaSoft.MvvmLight.Command;
-    using GalaSoft.MvvmLight.Views;
 
     using ShoppingList.Portable.Models;
     using ShoppingList.Portable.Services;

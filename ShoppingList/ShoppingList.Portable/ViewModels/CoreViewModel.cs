@@ -1,15 +1,14 @@
 ﻿namespace ShoppingList.Portable.ViewModels
 {
     using GalaSoft.MvvmLight;
-    using GalaSoft.MvvmLight.Views;
 
     public abstract class CoreViewModel : ViewModelBase
     {
-        protected readonly INavigationService NavigationService;
+        protected readonly Services.INavigationService NavigationService;
 
         private bool isLoading;
 
-        protected CoreViewModel(INavigationService navigationService)
+        protected CoreViewModel(Services.INavigationService navigationService)
         {
             this.NavigationService = navigationService;
         }
