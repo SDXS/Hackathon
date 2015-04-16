@@ -19,5 +19,9 @@
             get { return this.isLoading; }
             set { this.Set(ref this.isLoading, value); }
         }
+
+        public virtual void OnNavigateAway()
+        {
+        }
     }
 }

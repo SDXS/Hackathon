@@ -8,7 +8,7 @@
 
     public class EntryViewModel : CoreViewModel
     {
-        private Entry entity = null; 
+        private Entry entity = null;
 
         private bool isSelected = true;
 
@@ -115,6 +115,15 @@
             {
                 this.Description = this.entity.Description;
                 this.Amount = this.entity.Amount;
+            }
+        }
+
+        public override void OnNavigateAway()
+        {
+            if (this.entity != null)
+            {
+                this.Amount = this.entity.Amount;
+                this.Description = this.entity.Description;
             }
         }
     }

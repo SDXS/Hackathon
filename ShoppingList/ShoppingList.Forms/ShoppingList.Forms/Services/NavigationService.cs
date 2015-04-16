@@ -17,6 +17,8 @@
 
         private NavigationPage navigationPage;
 
+        private CoreViewModel lastViewModel;
+
         public void Initialize(NavigationPage navigationPage)
         {
             this.navigationPath.Clear();
@@ -25,8 +27,6 @@
             this.navigationPage.Pushed += this.navigationPage_Pushed;
             this.navigationPage_Pushed(this, new NavigationEventArgs(navigationPage.CurrentPage));
         }
-
-        public event Action<Page, Page> Navigate;
 
         public string CurrentPageKey
         {
@@ -61,11 +61,23 @@
 
         private void navigationPage_Popped(object sender, NavigationEventArgs e)
         {
+            if (this.lastViewModel != null)
+            {
+                this.lastViewModel.OnNavigateAway();
+            }
+
             this.navigationPath.Pop();
+
+            this.lastViewModel = ((NavigationPage)Application.Current.MainPage).CurrentPage.BindingContext as CoreViewModel;
         }
 
         private void navigationPage_Pushed(object sender, NavigationEventArgs e)
         {
+            if (this.lastViewModel != null)
+            {
+                this.lastViewModel.OnNavigateAway();
+            }
+
             if (e.Page is EntryPage)
             {
                 this.navigationPath.Push(NavigationConstants.EntryPage);
@@ -74,6 +86,8 @@
             {
                 this.navigationPath.Push(NavigationConstants.ListPage);
             }
+
+            this.lastViewModel = e.Page.BindingContext as CoreViewModel;
         }
     }
 }
