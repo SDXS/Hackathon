@@ -138,7 +138,7 @@
                                    new Entry { Description = "RJ45 CAT8 Kabel 20m", Amount = 7 },
                                    new Entry { Description = "16 Slot Router", Amount = 1 },
                                    new Entry { Description = "Ersatz Blade-Frontblende", Amount = 1 },
-                                   new Entry { Description = "6TB Enterprise Hard Disk SATA-III", Amount = 8 },
+                                   new Entry { Description = "6TB Enterprise Hard Disk SAS2", Amount = 8 },
                                    new Entry { Description = "1TB Enterprise SSD SATA-III", Amount = 2 },
                                    new Entry { Description = "1TB Enterprise SSD PCIe", Amount = 1 },
                                    new Entry { Description = "ESX Lizenz", Amount = 2 },
