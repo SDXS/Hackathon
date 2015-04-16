@@ -10,7 +10,7 @@
     {
         private Entry entity = null; 
 
-        private bool isSelected = false;
+        private bool isSelected = true;
 
         private int amount = 1;
 
