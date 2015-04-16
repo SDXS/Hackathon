@@ -21,7 +21,7 @@
             var menuItem = sender as MenuItem;
             if (menuItem != null)
             {
-                this.viewModel.DeleteCommand.Execute(menuItem.BindingContext as EntryViewModel);
+                this.viewModel.DeleteCommand.Execute(menuItem.BindingContext as Portable.Models.Entry);
             }
         }
 
@@ -30,18 +30,13 @@
             var menuItem = sender as MenuItem;
             if (menuItem != null)
             {
-                this.viewModel.EditCommand.Execute(menuItem.BindingContext as EntryViewModel);
+                this.viewModel.EditCommand.Execute(menuItem.BindingContext as Portable.Models.Entry);
             }
         }
 
-        void OnItemTapped(object sender, ItemTappedEventArgs e)
+        void listvView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e == null)
-            {
-                return; // has been set to null, do not 'process' tapped event
-            }
-
-            ((ListView)sender).SelectedItem = null; // de-select the row
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }

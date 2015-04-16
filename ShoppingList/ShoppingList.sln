@@ -15,6 +15,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Portable", "Sh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Forms.WinRT", "ShoppingList.Forms.WinRT\ShoppingList.Forms.WinRT.csproj", "{216C7E80-C0C1-4DA5-B05F-04E9BE207AE0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3F4AE439-84E9-4276-90D1-CC1CB1ACE8D5}"
+	ProjectSection(SolutionItems) = preProject
+		KnownIssues.txt = KnownIssues.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU

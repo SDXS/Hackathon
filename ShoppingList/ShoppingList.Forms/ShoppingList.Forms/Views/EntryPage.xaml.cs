@@ -13,7 +13,7 @@
             this.viewModel = viewModel;
             this.BindingContext = this.viewModel;
 
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

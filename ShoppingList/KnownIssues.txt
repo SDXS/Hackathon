@@ -1,0 +1,5 @@
+iOS
+- the list view is not transparent, due the view cell renderer is not applied because of the context menu items (This is a Xamarin Feature)
+
+WinRT
+- Is really buggy because Xamarin.Forms.Windows is still an alpha release version.

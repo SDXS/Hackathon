@@ -1,30 +1,34 @@
 ﻿namespace ShoppingList.Portable.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
-    using GalaSoft.MvvmLight.Ioc;
     using GalaSoft.MvvmLight.Views;
 
     using ShoppingList.Portable.Models;
+    using ShoppingList.Portable.Services;
 
     public class EntryViewModel : CoreViewModel
     {
-        private Entry entity = null;
+        private readonly DataService dataService;
+
+        private Entry model;
 
         private int amount = 1;
 
         private string description = string.Empty;
 
-        public EntryViewModel(INavigationService navigationService, Entry entity = null)
+        public EntryViewModel(INavigationService navigationService, DataService dataService, Entry model = null)
             : base(navigationService)
         {
-            this.entity = entity;
+            this.dataService = dataService;
 
-            this.Reset();
+            this.model = model;
+            this.Description = this.model.Description;
+            this.Amount = this.model.Amount;
         }
 
-        internal Entry Entity
+        internal Entry Model
         {
-            get { return this.entity; }
+            get { return this.model; }
         }
 
         public string Description
@@ -53,7 +57,7 @@
 
         public bool IsAdded
         {
-            get { return this.entity != null; }
+            get { return this.model != null; }
         }
 
         #region Commands
@@ -67,15 +71,18 @@
                        (this.saveCommand =
                         new RelayCommand(async () =>
                             {
-                                if (this.entity == null)
+                                var newEntry = !this.IsAdded;
+                                if (newEntry)
                                 {
-                                    this.entity = new Entry();
+                                    this.model = new Entry();
                                 }
 
-                                entity.Description = this.Description;
-                                entity.Amount = this.Amount;
+                                this.model.Description = this.Description;
+                                this.model.Amount = this.Amount;
 
-                                await SimpleIoc.Default.GetInstance<ListViewModel>().SaveAsync(this);
+                                if (newEntry) await this.dataService.AddAsync(this.model);
+                                else await this.dataService.UpdateAsync(this.model);
+
                                 this.NavigationService.GoBack();
                             },
                             () => this.amount > 0 && this.description.Length > 0));
@@ -89,10 +96,9 @@
             {
                 return this.removeCommand ??
                         (this.removeCommand =
-                        new RelayCommand(
-                            () =>
+                        new RelayCommand(async () =>
                             {
-                                SimpleIoc.Default.GetInstance<ListViewModel>().RemoveAsync(this);
+                                await this.dataService.RemoveAsync(this.model);
                                 this.NavigationService.GoBack();
                             },
                             () => this.IsAdded));
@@ -100,23 +106,5 @@
         }
 
         #endregion Commands
-
-        internal void Reset()
-        {
-            if (this.entity != null)
-            {
-                this.Description = this.entity.Description;
-                this.Amount = this.entity.Amount;
-            }
-        }
-
-        public override void OnNavigateAway()
-        {
-            if (this.entity != null)
-            {
-                this.Amount = this.entity.Amount;
-                this.Description = this.entity.Description;
-            }
-        }
     }
 }
