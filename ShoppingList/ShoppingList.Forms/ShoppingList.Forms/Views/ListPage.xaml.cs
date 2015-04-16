@@ -1,7 +1,5 @@
 ﻿namespace ShoppingList.Forms.Views
 {
-    using System.Collections.Generic;
-
     using ShoppingList.Portable.ViewModels;
 
     using Xamarin.Forms;
@@ -18,7 +16,7 @@
             this.InitializeComponent();
         }
 
-        void removeButton_Clicked(object sender, System.EventArgs e)
+        void removeMenuItem_Clicked(object sender, System.EventArgs e)
         {
             var menuItem = sender as MenuItem;
             if (menuItem != null)
@@ -27,13 +25,23 @@
             }
         }
 
-        void editButton_Clicked(object sender, System.EventArgs e)
+        void editMenuItem_Clicked(object sender, System.EventArgs e)
         {
             var menuItem = sender as MenuItem;
             if (menuItem != null)
             {
                 this.viewModel.EditCommand.Execute(menuItem.BindingContext as EntryViewModel);
             }
+        }
+
+        void OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e == null)
+            {
+                return; // has been set to null, do not 'process' tapped event
+            }
+
+            ((ListView)sender).SelectedItem = null; // de-select the row
         }
     }
 }

@@ -5,14 +5,14 @@
   <Grid>
     <Image Source="bg.png" HorizontalOptions="Start" VerticalOptions="Center" />
     <StackLayout VerticalOptions="Fill">
-      <ListView x:Name="listView" ItemsSource="{Binding Entries}" BackgroundColor="Transparent">
+      <ListView x:Name="listView" ItemsSource="{Binding Entries}" BackgroundColor="Transparent" ItemTapped="OnItemTapped">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
               <ViewCell.ContextActions>
-                <MenuItem Clicked="editButton_Clicked"
+                <MenuItem Clicked="editMenuItem_Clicked"
                    Text="Edit" />
-                <MenuItem Clicked="removeButton_Clicked"
+                <MenuItem Clicked="removeMenuItem_Clicked"
                    Text="Delete" IsDestructive="True" />
               </ViewCell.ContextActions>
               <ViewCell.View>
