@@ -4,7 +4,7 @@
              x:Class="ShoppingList.Forms.Views.ListPage">
   <Grid>
     <Image Source="bg.png" HorizontalOptions="Start" VerticalOptions="Center" />
-    <StackLayout VerticalOptions="Fill">
+    <StackLayout VerticalOptions="Fill" IsVisible="{Binding IsNotLoading}">
       <ListView x:Name="listView" ItemsSource="{Binding Entries}" BackgroundColor="Transparent" ItemTapped="listvView_ItemTapped">
         <ListView.ItemTemplate>
           <DataTemplate>
@@ -35,5 +35,7 @@
         <Button Text="Clear" HorizontalOptions="EndAndExpand" Command="{Binding DeleteAllCommand}" />
       </StackLayout>
     </StackLayout>
+
+    <ActivityIndicator IsRunning="{Binding IsLoading}" />
   </Grid>
 </ContentPage>

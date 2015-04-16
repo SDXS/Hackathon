@@ -114,6 +114,8 @@
         #region File Handling
         private async Task<List<Entry>> LoadDataAsync()
         {
+            await Task.Delay(3000); // simulate Load
+
             if ((await FileSystem.Current.LocalStorage.CheckExistsAsync(FileName)) == ExistenceCheckResult.FileExists)
             {
                 var file = await FileSystem.Current.LocalStorage.GetFileAsync(FileName);
@@ -124,6 +126,7 @@
                         var dataContainer = DataContractSerializer.ReadObject(xmlReader) as DataContainer;
                         if (dataContainer != null && dataContainer.Entries.Any())
                         {
+                            this.once = true;
                             return dataContainer.Entries;
                         }
                     }

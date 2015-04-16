@@ -10,7 +10,7 @@
   </ContentPage.Resources>
   <Grid>
     <Image Source="bg.png" HorizontalOptions="Start" VerticalOptions="Center" />
-    <StackLayout>
+    <StackLayout IsVisible="{Binding IsNotLoading}">
       <Entry Text="{Binding Description}" Placeholder="Description" />
       <Entry Text="{Binding Amount, Converter={StaticResource IntegerToStringConverter}}" Placeholder="Amount" Keyboard="Numeric" />
       <StackLayout Orientation="Horizontal">
@@ -18,5 +18,6 @@
         <Button Text="Delete" Command="{Binding RemoveCommand}" IsVisible="{Binding IsAdded}" />
       </StackLayout>
     </StackLayout>
+    <ActivityIndicator IsRunning="{Binding IsLoading}" />
   </Grid>
 </ContentPage>

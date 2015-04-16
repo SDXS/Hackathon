@@ -17,7 +17,18 @@
         public bool IsLoading
         {
             get { return this.isLoading; }
-            set { this.Set(ref this.isLoading, value); }
+            set
+            {
+                if (this.Set(ref this.isLoading, value))
+                {
+                    this.RaisePropertyChanged(() => this.IsNotLoading);
+                }
+            }
+        }
+
+        public bool IsNotLoading
+        {
+            get { return !this.IsLoading; }
         }
     }
 }
