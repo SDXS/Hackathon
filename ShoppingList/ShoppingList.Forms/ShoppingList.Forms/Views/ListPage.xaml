@@ -9,6 +9,12 @@
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
+              <ViewCell.ContextActions>
+                <MenuItem Clicked="editButton_Clicked"
+                   Text="Edit" />
+                <MenuItem Clicked="removeButton_Clicked"
+                   Text="Delete" IsDestructive="True" />
+              </ViewCell.ContextActions>
               <ViewCell.View>
                 <ContentView HeightRequest="70">
                   <Grid>
@@ -16,13 +22,9 @@
                       <ColumnDefinition Width="50" />
                       <ColumnDefinition Width="10" />
                       <ColumnDefinition Width="*" />
-                      <ColumnDefinition Width="Auto" />
-                      <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Text="{Binding Amount}" VerticalOptions="Center" HorizontalOptions="End" />
                     <Label Grid.Column="2" Text="{Binding Description}" VerticalOptions="Center" />
-                    <Button Grid.Column="3" Text="Edit" HorizontalOptions="StartAndExpand" IsVisible="{Binding IsSelected}" Clicked="editButton_Clicked" />
-                    <Button Grid.Column="4" Text="Remove" HorizontalOptions="EndAndExpand" IsVisible="{Binding IsSelected}" Clicked="removeButton_Clicked" />
                   </Grid>
                 </ContentView>
               </ViewCell.View>
