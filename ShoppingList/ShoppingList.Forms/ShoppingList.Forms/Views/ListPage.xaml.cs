@@ -20,19 +20,19 @@
 
         void removeButton_Clicked(object sender, System.EventArgs e)
         {
-            var button = sender as Button;
-            if (button != null)
+            var menuItem = sender as MenuItem;
+            if (menuItem != null)
             {
-                this.viewModel.DeleteCommand.Execute(button.BindingContext as EntryViewModel);
+                this.viewModel.DeleteCommand.Execute(menuItem.BindingContext as EntryViewModel);
             }
         }
 
         void editButton_Clicked(object sender, System.EventArgs e)
         {
-            var button = sender as Button;
-            if (button != null)
+            var menuItem = sender as MenuItem;
+            if (menuItem != null)
             {
-                this.viewModel.EditCommand.Execute(button.BindingContext as EntryViewModel);
+                this.viewModel.EditCommand.Execute(menuItem.BindingContext as EntryViewModel);
             }
         }
 
