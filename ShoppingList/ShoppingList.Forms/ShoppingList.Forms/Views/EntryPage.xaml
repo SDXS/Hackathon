@@ -12,7 +12,7 @@
     <Image Source="bg.png" HorizontalOptions="Start" VerticalOptions="Center" />
     <StackLayout>
       <Entry Text="{Binding Description}" Placeholder="Description" />
-      <Entry Text="{Binding Amount, Converter={StaticResource IntegerToStringConverter}}" Placeholder="Amount" />
+      <Entry Text="{Binding Amount, Converter={StaticResource IntegerToStringConverter}}" Placeholder="Amount" Keyboard="Numeric" />
       <StackLayout Orientation="Horizontal">
         <Button Text="Save" Command="{Binding SaveCommand}" />
         <Button Text="Delete" Command="{Binding RemoveCommand}" IsVisible="{Binding IsAdded}" />
