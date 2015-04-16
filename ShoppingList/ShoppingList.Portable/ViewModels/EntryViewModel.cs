@@ -73,19 +73,27 @@
                        (this.saveCommand =
                         new RelayCommand(async () =>
                             {
-                                var newEntry = !this.IsAdded;
-                                if (newEntry)
+                                this.IsLoading = true;
+                                try
                                 {
-                                    this.model = new Entry();
+                                    var newEntry = !this.IsAdded;
+                                    if (newEntry)
+                                    {
+                                        this.model = new Entry();
+                                    }
+
+                                    this.model.Description = this.Description;
+                                    this.model.Amount = this.Amount;
+
+                                    if (newEntry) await this.dataService.AddAsync(this.model);
+                                    else await this.dataService.UpdateAsync(this.model);
+
+                                    this.NavigationService.GoBack();
                                 }
-
-                                this.model.Description = this.Description;
-                                this.model.Amount = this.Amount;
-
-                                if (newEntry) await this.dataService.AddAsync(this.model);
-                                else await this.dataService.UpdateAsync(this.model);
-
-                                this.NavigationService.GoBack();
+                                finally
+                                {
+                                    this.IsLoading = false;
+                                }
                             },
                             () => this.amount > 0 && this.description.Length > 0));
             }
@@ -100,8 +108,16 @@
                         (this.removeCommand =
                         new RelayCommand(async () =>
                             {
-                                await this.dataService.RemoveAsync(this.model);
-                                this.NavigationService.GoBack();
+                                this.IsLoading = true;
+                                try
+                                {
+                                    await this.dataService.RemoveAsync(this.model);
+                                    this.NavigationService.GoBack();
+                                }
+                                finally
+                                {
+                                    this.IsLoading = false;
+                                }
                             },
                             () => this.IsAdded));
             }

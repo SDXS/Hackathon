@@ -114,7 +114,7 @@
         #region File Handling
         private async Task<List<Entry>> LoadDataAsync()
         {
-            await Task.Delay(3000); // simulate Load
+            await Task.Delay(1500); // simulate Load
 
             if ((await FileSystem.Current.LocalStorage.CheckExistsAsync(FileName)) == ExistenceCheckResult.FileExists)
             {
