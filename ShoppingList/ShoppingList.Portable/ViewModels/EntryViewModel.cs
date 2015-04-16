@@ -1,7 +1,6 @@
 ﻿namespace ShoppingList.Portable.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
-    using GalaSoft.MvvmLight.Views;
 
     using ShoppingList.Portable.Models;
     using ShoppingList.Portable.Services;

@@ -1,7 +1,6 @@
 ﻿namespace ShoppingList.Forms
 {
     using GalaSoft.MvvmLight.Ioc;
-    using GalaSoft.MvvmLight.Views;
 
     using ShoppingList.Forms.Services;
     using ShoppingList.Forms.Views;
@@ -18,8 +17,8 @@
             // The root page of your application
             this.MainPage = navigationPage = new NavigationPage(new ListPage(SimpleIoc.Default.GetInstance<ListViewModel>()));
 
-            var navigationService = (NavigationService)SimpleIoc.Default.GetInstance<INavigationService>();
-            navigationService.Initialize(navigationPage);
+            var navigationService = (NavigationService)SimpleIoc.Default.GetInstance<Portable.Services.INavigationService>();
+            navigationService.Initialize(this.MainPage.Navigation);
         }
 
         protected override void OnStart()
