@@ -10,8 +10,6 @@
     {
         private Entry entity = null;
 
-        private bool isSelected = false;
-
         private int amount = 1;
 
         private string description = string.Empty;
@@ -56,12 +54,6 @@
         public bool IsAdded
         {
             get { return this.entity != null; }
-        }
-
-        public bool IsSelected
-        {
-            get { return this.isSelected; }
-            set { this.Set(ref this.isSelected, value); }
         }
 
         #region Commands

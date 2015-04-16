@@ -96,13 +96,6 @@
             if (!this.Entries.Contains(entryViewModel))
             {
                 this.Entries = this.Entries.Concat(new[] { entryViewModel }).ToList();
-
-                foreach (var entry in this.Entries)
-                {
-                    entry.IsSelected = false;
-                }
-
-                entryViewModel.IsSelected = true;
             }
 
             await this.SaveChangesAsync();

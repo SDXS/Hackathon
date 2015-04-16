@@ -35,19 +35,5 @@
                 this.viewModel.EditCommand.Execute(menuItem.BindingContext as EntryViewModel);
             }
         }
-
-        void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            foreach (var variable in viewModel.Entries)
-            {
-                variable.IsSelected = false;
-            }
-
-            var entryViewModel = e.SelectedItem as EntryViewModel;
-            if (entryViewModel != null)
-            {
-                entryViewModel.IsSelected = true;
-            }
-        }
     }
 }
