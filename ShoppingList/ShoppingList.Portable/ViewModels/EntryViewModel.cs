@@ -22,8 +22,11 @@
             this.dataService = dataService;
 
             this.model = model;
-            this.Description = this.model.Description;
-            this.Amount = this.model.Amount;
+            if (model != null)
+            {
+                this.Description = model.Description;
+                this.Amount = model.Amount;
+            }
         }
 
         internal Entry Model
