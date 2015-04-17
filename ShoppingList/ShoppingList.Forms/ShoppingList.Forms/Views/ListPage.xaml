@@ -36,6 +36,9 @@
       </StackLayout>
     </StackLayout>
     <Grid BackgroundColor="#40000000" IsVisible="{Binding IsLoading}" />
-    <ActivityIndicator IsRunning="{Binding IsLoading}" />
+    <ActivityIndicator IsRunning="{Binding IsLoading}"
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center" 
+                       />
   </Grid>
 </ContentPage>
