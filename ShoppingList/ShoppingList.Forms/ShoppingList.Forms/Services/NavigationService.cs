@@ -8,16 +8,9 @@
 
     public class NavigationService : Portable.Services.INavigationService
     {
-        private INavigation navigation;
-
-        public void Initialize(INavigation navigation)
-        {
-            this.navigation = navigation;
-        }
-
         public void GoBack()
         {
-            this.navigation.PopAsync();
+            Application.Current.MainPage.Navigation.PopAsync();
         }
 
         public void NavigateTo(string pageKey, object parameter)
@@ -25,10 +18,10 @@
             switch (pageKey)
             {
                 case NavigationConstants.EntryPage:
-                    this.navigation.PushAsync(new EntryPage(parameter as EntryViewModel));
+                    Application.Current.MainPage.Navigation.PushAsync(new EntryPage(parameter as EntryViewModel));
                     break;
                 case NavigationConstants.ListPage:
-                    this.navigation.PushAsync(new ListPage(parameter as ListViewModel));
+                    Application.Current.MainPage.Navigation.PushAsync(new ListPage(parameter as ListViewModel));
                     break;
             }
         }
