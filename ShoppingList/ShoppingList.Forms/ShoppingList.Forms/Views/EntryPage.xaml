@@ -13,12 +13,20 @@
     <StackLayout>
       <Entry Text="{Binding Description}" Placeholder="Description" />
       <Entry Text="{Binding Amount, Converter={StaticResource IntegerToStringConverter}}" Placeholder="Amount" Keyboard="Numeric" />
-      <StackLayout Orientation="Horizontal">
-        <Button Text="Save" Command="{Binding SaveCommand}" />
-        <Button Text="Delete" Command="{Binding RemoveCommand}" IsVisible="{Binding IsAdded}" />
+      <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+        <Button Text="Save" HorizontalOptions="StartAndExpand" Command="{Binding SaveCommand}" />
+        <Button Text="Delete" HorizontalOptions="EndAndExpand" Command="{Binding RemoveCommand}" IsVisible="{Binding IsAdded}" />
       </StackLayout>
     </StackLayout>
+    
     <Grid BackgroundColor="#40000000" IsVisible="{Binding IsLoading}" />
-    <ActivityIndicator IsRunning="{Binding IsLoading}" />
+    <ActivityIndicator IsRunning="true" IsVisible="{Binding IsLoading}">
+      <ActivityIndicator.HorizontalOptions>
+        <OnPlatform x:TypeArguments="LayoutOptions" iOS="Fill" Android="Center" WinPhone="Fill" />
+      </ActivityIndicator.HorizontalOptions>
+      <ActivityIndicator.VerticalOptions>
+        <OnPlatform x:TypeArguments="LayoutOptions" iOS="Fill" Android="Center" WinPhone="Fill" />
+      </ActivityIndicator.VerticalOptions>
+    </ActivityIndicator>
   </Grid>
 </ContentPage>

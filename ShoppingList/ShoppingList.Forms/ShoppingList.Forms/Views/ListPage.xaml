@@ -35,10 +35,15 @@
         <Button Text="Clear" HorizontalOptions="EndAndExpand" Command="{Binding DeleteAllCommand}" />
       </StackLayout>
     </StackLayout>
+    
     <Grid BackgroundColor="#40000000" IsVisible="{Binding IsLoading}" />
-    <ActivityIndicator IsRunning="{Binding IsLoading}"
-                       HorizontalOptions="Center" 
-                       VerticalOptions="Center" 
-                       />
+    <ActivityIndicator IsRunning="true" IsVisible="{Binding IsLoading}">
+      <ActivityIndicator.HorizontalOptions>
+        <OnPlatform x:TypeArguments="LayoutOptions" iOS="Fill" Android="Center" WinPhone="Fill" />
+      </ActivityIndicator.HorizontalOptions>
+      <ActivityIndicator.VerticalOptions>
+        <OnPlatform x:TypeArguments="LayoutOptions" iOS="Fill" Android="Center" WinPhone="Fill" />
+      </ActivityIndicator.VerticalOptions>
+    </ActivityIndicator>
   </Grid>
 </ContentPage>
