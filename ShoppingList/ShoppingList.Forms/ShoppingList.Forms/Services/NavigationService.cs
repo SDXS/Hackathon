@@ -8,14 +8,12 @@
 
     public class NavigationService : Portable.Services.INavigationService
     {
-
         private INavigation navigation;
 
         public void Initialize(INavigation navigation)
         {
             this.navigation = navigation;
         }
-
 
         public void GoBack()
         {

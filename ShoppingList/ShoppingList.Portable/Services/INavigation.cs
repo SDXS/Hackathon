@@ -7,8 +7,7 @@
         ///  and display the previous page on the navigation stack.
         /// </summary>
         void GoBack();
-
-
+        
         /// <summary>
         /// Instructs the navigation service to display a new page corresponding to the
         ///  given key. Depending on the platforms, the navigation service might have
