@@ -12,10 +12,8 @@
     {
         public App()
         {
-            NavigationPage navigationPage;
-
             // The root page of your application
-            this.MainPage = navigationPage = new NavigationPage(new ListPage(SimpleIoc.Default.GetInstance<ListViewModel>()));
+            this.MainPage = new NavigationPage(new ListPage(SimpleIoc.Default.GetInstance<ListViewModel>()));
 
             var navigationService = (NavigationService)SimpleIoc.Default.GetInstance<Portable.Services.INavigationService>();
             navigationService.Initialize(this.MainPage.Navigation);
