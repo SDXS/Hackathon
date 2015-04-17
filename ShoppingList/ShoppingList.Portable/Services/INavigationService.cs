@@ -10,14 +10,6 @@
         
         /// <summary>
         /// Instructs the navigation service to display a new page corresponding to the
-        ///  given key. Depending on the platforms, the navigation service might have
-        ///  to be configured with a key/page list.
-        /// </summary>
-        /// <param name="pageKey">The key corresponding to the page that should be displayed.</param>
-        void NavigateTo(string pageKey);
-        
-        /// <summary>
-        /// Instructs the navigation service to display a new page corresponding to the
         ///  given key, and passes a parameter to the new page.  Depending on the platforms,
         ///  the navigation service might have to be Configure with a key/page list.
         /// </summary>

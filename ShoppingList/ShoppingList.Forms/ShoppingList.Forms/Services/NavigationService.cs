@@ -25,10 +25,5 @@
                     break;
             }
         }
-
-        public void NavigateTo(string pageKey)
-        {
-            this.NavigateTo(pageKey, null);
-        }
     }
 }
